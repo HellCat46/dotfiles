@@ -1,5 +1,4 @@
 { inputs, config, pkgs, ... }:
-
 {
   imports = [
     ./rofi
@@ -22,11 +21,11 @@
     fuzzel
     thunderbird
     zed-editor
-    virt-manager
-    qemu-utils
     networkmanagerapplet
     vesktop
     chromium
+    vivaldi
+    qt5.full
     playerctl
     firefox
     pavucontrol
