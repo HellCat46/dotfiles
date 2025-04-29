@@ -1,24 +1,18 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [ 
       ./hardware-configuration.nix
       ./virt
     ];
 
-  # Bootloader.
-  #boot.loader.grub.enable = true;
-  #boot.loader.grub.device = "/dev/sda";
-  #boot.loader.grub.useOSProber = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.timeout = 5;
+  boot.kernelModules = [ "v4l2loopback" ];
+  boot.extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
 
   # Required for keeping Time Synced on Dual Boot System for Windows
   time.hardwareClockInLocalTime = true;
@@ -47,7 +41,7 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "satella"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -56,6 +50,12 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+
+  services.udisks2.enable = true;
+
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -86,23 +86,6 @@
       enableUserService = true;
     };
   };
-
-  # Enable the X11 windowing system.
-  #services.displayManager.defaultSession = "none+i3";
-  #services.xserver = {
-	#enable = true;
-	#desktopManager.xterm.enable =false;
-	#windowManager.i3 = {
-	#	enable = true;
-	#	extraPackages = with pkgs; [
-	#		dmenu
-	#		rofi
-	#		i3status
-	#	];
-	#};
-# };
-	
-
 
   # Configure keymap in X11
   services.xserver.xkb = {

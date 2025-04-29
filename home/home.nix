@@ -4,6 +4,7 @@
     ./rofi
     ./cli
     ./cosmetic
+    ./deskEnv
   ];
   home.username = "hellcat";
   home.homeDirectory = "/home/hellcat";
@@ -11,7 +12,6 @@
 
   # Enable home-manager
   programs.home-manager.enable = true;
-  programs.hyprlock.enable = true;
 
 
   nixpkgs.config.allowUnfree = true;
@@ -37,8 +37,6 @@
     slurp 
     haskellPackages.greenclip
     wl-clipboard
-    hypridle
-    hyprpaper
     inputs.zen-browser.packages."${system}".default
     spotify
     obs-studio

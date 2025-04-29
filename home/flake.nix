@@ -19,7 +19,7 @@
   } : let
       system = "x86_64-linux";
     in {
-      homeConfigurations."hellcat@nixos" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."hellcat@satella" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           inherit system;
         };
