@@ -75,10 +75,6 @@
     LC_TIME = "en_IN";
   };
 
-  services.displayManager.ly.enable = true;	
-  programs.hyprland.enable = true;
-  programs.hyprland.xwayland.enable = true;
-  programs.waybar.enable = true;
 
   services = {
     asusd = {
