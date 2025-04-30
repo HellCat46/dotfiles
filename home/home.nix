@@ -28,6 +28,7 @@
     qt5.full
     playerctl
     firefox
+    resources
     pavucontrol
     vscode
     audacity
