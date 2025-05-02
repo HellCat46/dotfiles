@@ -1,5 +1,17 @@
-{inputs, config, ...}:
+{inputs, config, pkgs,...}:
 {
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = ["gtk"];
+      hyprland.default = ["gtk" "hyprland"];
+    };
+    extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-hyprland
+    ];
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -36,11 +48,6 @@
         active_opacity = 1.0;
         inactive_opacity = 0.8;
 
-        #drop_shadow = true;
-        #shadow_range = 4;
-        #shadow_render_power = 3;
-        # "col.shadow" = "rgba(1a1a1aee)";
-
         blur.enabled = false;
       };
 
@@ -76,7 +83,7 @@
       };
 
       gestures = {
-        workspace_swipe = false;
+        workspace_swipe = true;
       };
 
       bind = [

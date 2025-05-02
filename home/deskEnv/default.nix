@@ -3,6 +3,7 @@
   imports = [
     ./hyprland.nix
     ./hyprutils.nix
+    ./applauncher.nix
   ];
 
   home.packages = with pkgs; [

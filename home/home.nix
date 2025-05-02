@@ -1,7 +1,6 @@
 { inputs, config, pkgs, ... }:
 {
   imports = [
-    ./rofi
     ./cli
     ./cosmetic
     ./deskEnv
@@ -18,10 +17,10 @@
 
   # User packages
   home.packages = (with pkgs; [
-    fuzzel
     thunderbird
     zed-editor
     networkmanagerapplet
+    ollama-cuda
     vesktop
     chromium
     vivaldi
