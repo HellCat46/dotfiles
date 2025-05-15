@@ -49,7 +49,7 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.wireless.iwd.enable = true;
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -82,6 +82,7 @@
       enableUserService = true;
     };
   };
+  services.supergfxd.enable = false;
 
   # Configure keymap in X11
   services.xserver.xkb = {

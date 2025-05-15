@@ -140,7 +140,7 @@
         ", XF86AudioPlay, exec, playerctl play-pause"
         
         # Screenshot
-        "CTRL SHIFT, S, exec, slurp | grim -g - - > ~/Pictures/Screenshots/$(date +'Screenshot_%s.png') | wl-copy"
+        "CTRL SHIFT, S, exec, grim -g \"$(slurp)\" - | tee ~/Pictures/Screenshots/$(date +'Screenshot_%s.png') | wl-copy --type image/png"
       ];
 
       bindm = [
