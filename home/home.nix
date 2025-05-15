@@ -1,4 +1,10 @@
 { inputs, config, pkgs, ... }:
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config = config.nixpkgs.config;
+  };
+in
 {
   imports = [
     ./cli
@@ -19,36 +25,30 @@
   home.packages = (with pkgs; [
     thunderbird
     zed-editor
-    networkmanagerapplet
-    ollama-cuda
     vesktop
+    spotify-player
     chromium
     vivaldi
-    qt5.full
-    playerctl
-    firefox
     resources
     pavucontrol
     vscode
     audacity
     xfce.thunar
     zettlr
-    grim 
-    slurp 
+    d-spy
+    bustle
     haskellPackages.greenclip
-    wl-clipboard
     inputs.zen-browser.packages."${system}".default
-    spotify
     obs-studio
-    android-studio
-    jdk23
     gdb 
     nodejs
     yarn
     clang-tools
     android-tools
+    unstable.android-studio
+    unstable.ollama-cuda
   ]) ++ 
-    (with pkgs.jetbrains; [
+    (with unstable.jetbrains; [
       idea-ultimate
       goland
       clion

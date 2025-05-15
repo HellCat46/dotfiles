@@ -9,5 +9,9 @@
   home.packages = with pkgs; [
     hypridle
     hyprpaper
+    playerctl
+    slurp
+    grim
+    wl-clipboard
   ];
 }
