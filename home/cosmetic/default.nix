@@ -6,6 +6,7 @@
   ];
 
   stylix = {
+    enable = true;
     image = null;
     base16Scheme = {
       base00 = "1e1e2e"; # Base
@@ -38,69 +39,47 @@
       };
 
       monospace = {
-        package = pkgs.noto-fonts-mono;
+        package = pkgs.noto-fonts;
         name = "Noto Sans Mono";
       };
 
       emoji = {
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts;
         name = "Noto Color Emoji";
       };
     };
-  };
-
-
-  home.pointerCursor = {
-    gtk.enable = true;
-    name = "Catppuccin-Mocha-Lavender-Cursors";
-    package = pkgs.catppuccin-cursors.mochaLavender;
-    size = 16;
-  };
-
-
-  services.dunst = {
-    settings = {
-      global = {
-        frame_color = "#89b4fa";
-        seperator_color = "frame";
-      };
-      urgency_low = {
-        background = "#1e1e2e";
-        foreground = "#cdd6f4";
-      };
-      urgency_normal = {
-        background = "#1e1e2e";
-        foreground = "#cdd6f4";
-      };
-      urgency_critical = {
-        background = "#1e1e2e";
-        foreground = "#cdd6f4";
-        frame_color = "#fab387";
-      };
+    targets = {
+        fuzzel.enable = false;
+        hyprpaper.enable = false;
+        hyprlock.enable = false;
+        hyprland.enable = false;
+        alacritty.enable = false;
+        gtk.enable = true;
+        qt.enable = true;
+        waybar.enable = false;
     };
   };
 
-
-  gtk = {
-    font = {
-      name = "Inter";
-      size = 11;
-    };
-    theme = {
-        package = pkgs.catppuccin-gtk.override {
-          accents = [ "lavender" ];
-          size = "standard";
-          tweaks = [ "normal" ];
-          variant = "mocha";
+    gtk = {
+        enable = true;
+        gtk3.extraConfig = {
+            gtk-application-prefer-dark-theme = true;
         };
-        name = "catppuccin-mocha-lavender-standard+normal";
-      };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "mocha";
-        accent = "lavender";
-      };
+        iconTheme = {
+            name = "Papirus-Dark";
+            package = pkgs.catppuccin-papirus-folders.override {
+                flavor = "mocha";
+                accent = "lavender";
+            };
+        };
     };
+
+   home.pointerCursor = {
+    gtk.enable = true;
+        name = "Catppuccin-Mocha-Lavender-Cursors";
+        package = pkgs.catppuccin-cursors.mochaLavender;
+        size = 16;
   };
+
+
 }

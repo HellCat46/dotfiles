@@ -12,6 +12,15 @@
     playerctl
     slurp
     grim
+    pavucontrol
     wl-clipboard
-  ];
+    xdg-utils
+    xfce.thunar
+    ueberzugpp
+    google-chrome
+    firefox
+    zettlr
+    obs-studio
+    #resources
+];
 }

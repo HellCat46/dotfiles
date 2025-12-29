@@ -6,11 +6,11 @@
     syntaxHighlighting.enable = true;
     history = {
       path = "$HOME/.histfile";
-      size = 1000;
-      save = 1000;
+      size = 50000;
+      save = 50000;
     };
 
-    initExtra = ''
+    initContent = ''
       # Search history
       bindkey '\e[A' history-search-backward
       bindkey '\e[B' history-search-forward
@@ -36,6 +36,7 @@
     sessionVariables = {
       PATH = "$PATH:$HOME/.dotnet/tools/:$HOME/.local/bin:$HOME/Android/Sdk/platform-tools:$HOME/Android/Sdk/emulator";
       GOPRIVATE = "github.com/Seikakuna/*";
+      PROMPT_EOL_MARK = "";
     };
     completionInit = ''
       autoload -U compinit && compinit

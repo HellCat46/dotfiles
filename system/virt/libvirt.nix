@@ -1,7 +1,6 @@
 {inputs, config, pkgs, ...} : 
 {
   virtualisation.libvirtd = {
-    enable = true;
     qemu = {
       package = pkgs.qemu_full;
       runAsRoot = true;

@@ -2,14 +2,13 @@
   description = "Home Manager flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:danth/stylix/release-24.11";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    stylix.url = "github:danth/stylix/release-25.11";
   };
 
   outputs = inputs@{ 
@@ -30,8 +29,8 @@
           inherit inputs;
         };
         modules = [
-          stylix.homeManagerModules.stylix
           ./home.nix
+          stylix.homeModules.stylix
         ];
     };
   };

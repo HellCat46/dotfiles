@@ -23,8 +23,9 @@
       ];
 
       exec-once = [
-        "zen & alacritty"
-        "waybar & hyprpaper & hypridle"
+        "alacritty"
+        "waybar"
+        "hyprpaper | hypridle"
       ];
 
       env = [
@@ -46,7 +47,6 @@
       decoration = {
         rounding = 0;
         active_opacity = 1.0;
-        inactive_opacity = 0.8;
 
         blur.enabled = false;
       };
@@ -82,9 +82,9 @@
         };
       };
 
-      gestures = {
-        workspace_swipe = true;
-      };
+      gesture = [
+        "3, horizontal, workspace"
+      ];
 
       bind = [
         "$mainMod, RETURN, exec, alacritty"
@@ -130,6 +130,10 @@
         # Special workspace
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
+
+        # Move workspace between monitors
+        "$mainMod CTRL, A, movecurrentworkspacetomonitor, \"HDMI-A-1\""
+        "$mainMod CTRL, D, movecurrentworkspacetomonitor, \"eDP0\""
         
         # Workspace scroll
         "$mainMod, mouse_down, workspace, e+1"

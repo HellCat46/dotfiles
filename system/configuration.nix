@@ -25,11 +25,13 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = false;
     open = false;
+    modesetting.enable = true;
     nvidiaSettings = true;
+    powerManagement = {
+        enable = false;
+        finegrained = false;
+    };
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
@@ -39,6 +41,8 @@
   } ];
 
 
+  programs.nix-ld.enable = true;
+  nix.settings.trusted-users = [ "root" "hellcat" ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   networking.hostName = "satella"; # Define your hostname.
@@ -94,7 +98,7 @@
   services.printing.enable = false;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -114,14 +118,14 @@
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     font-awesome
   ];
 
 
 
   console.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
   ];
 
 
@@ -134,7 +138,7 @@
     isNormalUser = true;
     useDefaultShell = true;
     description = "Harshit";
-    extraGroups = [ "networkmanager" "wheel" "adbusers" "kvm" "plugdev" ];
+    extraGroups = [ "networkmanager" "wheel" "adbusers" "kvm" "plugdev" "dialout" ];
   };
 
 
@@ -164,6 +168,7 @@
 	ffmpeg_6
 	python312
 	rustup
+    libsecret
 	home-manager
   ];
 
@@ -171,8 +176,13 @@
 
   programs.dconf.enable = true;
   programs.adb.enable = true;
-  services.udev.packages = [ pkgs.android-udev-rules ];
+  services.udev.packages = with pkgs; [ 
+        #android-udev-rules 
+        platformio-core.udev 
+    ];
 
+  services.gnome.gnome-keyring.enable = true;
+  # programs.ssh.startAgent = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -199,6 +209,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
 }
