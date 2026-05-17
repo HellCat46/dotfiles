@@ -25,15 +25,15 @@ in
 
   # User packages
   home.packages = with unstable; [
+        poppler-utils
         discord
         android-studio
-        jetbrains.clion
-        jetbrains.rider
         platformio
-            #ollama-cuda
+        valgrind
+        zed-editor
     ];
 
 
-  services.dunst.enable = true;
+  services.dunst.enable = false;
   qt.enable = true;
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   imports = [
     ./hyprland.nix
@@ -6,10 +6,10 @@
     ./applauncher.nix
   ];
 
+
   home.packages = with pkgs; [
     hypridle
     hyprpaper
-    playerctl
     slurp
     grim
     pavucontrol
@@ -21,6 +21,9 @@
     firefox
     zettlr
     obs-studio
+    showtime
+    transmission_4-gtk
     #resources
-];
+    (callPackage ./helium.nix {})
+  ];
 }

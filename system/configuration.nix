@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   imports =
     [ 
@@ -42,8 +41,10 @@
 
 
   programs.nix-ld.enable = true;
-  nix.settings.trusted-users = [ "root" "hellcat" ];
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    trusted-users = [ "root" "hellcat" ];
+    experimental-features = ["nix-command" "flakes"];
+  };
 
   networking.hostName = "satella"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -142,9 +143,6 @@
   };
 
 
-
-
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -158,6 +156,10 @@
 	git
 	curl
 	zip
+    nil
+    librsvg
+    nixd
+    ntfs3g
 	go
 	gcc
 	libgcc
@@ -166,20 +168,26 @@
 	starship
 	libtool
 	ffmpeg_6
-	python312
+    uv
 	rustup
     libsecret
 	home-manager
   ];
 
 
-
   programs.dconf.enable = true;
   programs.adb.enable = true;
+  programs.weylus = {
+        enable = true;
+        openFirewall = true;
+        users = [ "hellcat" ];
+  };
+  services.usbmuxd.enable = true;
+
   services.udev.packages = with pkgs; [ 
         #android-udev-rules 
         platformio-core.udev 
-    ];
+  ];
 
   services.gnome.gnome-keyring.enable = true;
   # programs.ssh.startAgent = true;

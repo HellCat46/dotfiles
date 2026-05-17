@@ -24,7 +24,7 @@
 
       exec-once = [
         "alacritty"
-        "waybar"
+        "./Projects/Current/hyprsic/build/hyprsic"
         "hyprpaper | hypridle"
       ];
 
@@ -157,5 +157,4 @@
       ];
     };
   };
-  programs.waybar.enable = true;
 }

@@ -4,6 +4,8 @@
   home.packages = with pkgs; [
     nodejs_24
     pnpm
-    vscode
+        #vscode
+    ollama-cuda
+    typst
   ];
 }

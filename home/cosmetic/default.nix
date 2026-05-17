@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs;[
     papirus-folders
-    icon-library
   ];
 
   stylix = {
@@ -57,6 +56,7 @@
         gtk.enable = true;
         qt.enable = true;
         waybar.enable = false;
+        zed.enable = false;
     };
   };
 
@@ -80,6 +80,4 @@
         package = pkgs.catppuccin-cursors.mochaLavender;
         size = 16;
   };
-
-
 }
